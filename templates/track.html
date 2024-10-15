@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <title>Map Assist</title>
+
+</head>
+<body>
+
+    <div class="container">
+
+
+        <!-- Video Background -->
+        <video class="video-bg" autoplay muted loop>
+        <source src="{{ url_for('static', filename='bge.mp4') }}" type="video/mp4">
+        Your browser does not support HTML5 video.
+        </video>
+
+        <!-- Header -->
+        <div class="header">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Map Assist Logo">
+            <h1>Map Assist</h1>
+        </div>
+
+        <!-- Buttons for Alerts and Report -->
+        <div class="buttons">
+            <button id="enable-alert">Enable Alert</button>
+            <button id="Speak">Speak</button>
+            <button id="report">Report</button>
+        </div>
+
+        
+
+        <!-- Journey Start/End and Buttons -->
+        <div class="journey">
+            <input type="text" placeholder="Enter Destination" id="end-journey">
+            <button id="start-journey-btn">Start</button>
+            <button id="view-transport-btn">View Public Transport</button>
+        </div>
+
+        <!-- Live Location Box -->
+        <div class="location">
+            Live Location: <span id="live-location">123 Street Name</span>
+        </div>
+
+        <!-- Speed Info and Nearby Services aligned side by side -->
+        <div class="info-container">
+            <!-- Speed Info Boxes -->
+            <div class="speed-info">
+                <div class="full-width-box">Speed Limit: <span id="speed-limit">50 km/h</span></div>
+                <div class="full-width-box">Current Speed: <span id="current-speed">45 km/h</span></div>
+                <div class="full-width-box">Approximate Speed: <span id="approx-speed">48 km/h</span></div>
+                <div class="distance-time">
+                    <div class="box1">Distance: <span id="distance">10 km</span></div>
+                    <div class="box2">Time to Reach: <span id="time-to-reach">20 mins</span></div>
+                </div>
+            </div>
+
+
+            <div class="map-container"  id="map"></div>
+
+
+
+            <!-- Nearby Services -->
+            <div class="nearby-services">
+                <div class="box" onclick="navigateToNearby('fuel')">Nearby Fuel Stations</div>
+                <div class="box" onclick="navigateToNearby('hospital')">Nearby Hospitals</div>
+                <div class="box" onclick="navigateToNearby('workshop')">Nearby Workshops</div>
+                <div class="box" onclick="navigateToNearby('police')">Nearby Police Stations</div>
+            </div>
+
+        <!-- Distance and Time to Reach -->
+        
+
+        <!-- Map and Nearby Services -->
+
+    </div>
+
+    
+    
+    
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 100px;
+    margin-right: 20px; /* Add some space between the logo and text */
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #f4f4f4;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#Speak{
+    margin-right: 70%;
+
+}
+
+.journey {
+    margin: 20px 0;
+}
+
+.journey input, .journey button {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 10px;
+}
+
+.journey button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.location {
+    width: 97%;
+    padding: 20px;
+    background-color: #e0e0e0;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* New flexbox container */
+.info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.speed-info, .nearby-services {
+    width: 30%; 
+}
+.nearby-services .box {
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    margin-left: 0%;
+    cursor: pointer;
+    
+}
+
+.full-width-box, .box {
+    padding: 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.distance-time {
+    display: flex;
+    justify-content: space-between;
+    width: 100% 
+}
+.distance-time .box1{
+    background-color:  #d4d4d4;
+    width: 40%;
+    padding: 20px 0px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 17px;
+}
+.distance-time .box2{
+    padding: 20px 0px;
+    font-size: 17px;
+    width: 55%;
+    background-color:  #d4d4d4;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.map-container {
+    width: 35%;
+    
+    height: auto;
+    top: 0%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #d4d4d4;
+    margin-bottom: 2%;
+}
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures the video covers the whole background */
+    z-index: -1; /* Sends the video to the background */
+}
+
+/* Responsive layout */
+
+
+@media (max-width: 768px) {
+    .container, .header h1, .buttons, .journey input, .journey button, .info-container,.speed-info, .nearby-services, .map-container, .nearby-services, .box
+        {width: 95%;}
+}

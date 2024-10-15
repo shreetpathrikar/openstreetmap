@@ -1,0 +1,10 @@
+flask
+requests
+# random 
+jsonify
+tranformers
+nltk
+torch
+# soundfile
+math
+SentencePiece

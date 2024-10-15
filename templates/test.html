@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location on OpenStreetMap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Location on OpenStreetMap</h1>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set its view to a default location (Berlin)
+        const map = L.map('map').setView([52.5, 13.4], 15);
+
+        // Load and display tile layers from OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Function to update the map with the user's current position
+        function updateMapPosition(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            // Reverse geocoding to get the location name
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Location Name:', data.display_name);  // Log the location name
+                })
+                .catch(error => console.error('Error with reverse geocoding:', error));
+
+            // Center the map on the user's current position
+            map.setView([lat, lng], 15);
+
+            // Remove previous marker if exists
+            if (window.userMarker) {
+                map.removeLayer(window.userMarker);
+            }
+
+            // Add a marker for the user's position
+            window.userMarker = L.marker([lat, lng]).addTo(map).bindPopup('You are here!').openPopup();
+        }
+
+        // Check if Geolocation API is available
+        if (navigator.geolocation) {
+            // Get the current position
+            navigator.geolocation.getCurrentPosition(
+                updateMapPosition,
+                error => {
+                    console.error("Error getting location: ", error);
+                },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+
+            // Track the position continuously (watchPosition)
+            navigator.geolocation.watchPosition(
+                updateMapPosition,
+                error => {
+                    console.error("Error tracking location: ", error);
+                },
+                { enableHighAccuracy: true, timeout: 5000 }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>
+
